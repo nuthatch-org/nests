@@ -164,7 +164,7 @@
       "complexity": "low",
       "summary": "Concentrated liquidity in a singleton - every pool lives inside one PoolManager, so there is no factory and no pool contracts. Hook adoption, per-pool activity and liquidity.",
       "events": "Initialize, Swap, ModifyLiquidity, Donate, Transfer, ProtocolFeeUpdated",
-      "note": "Structurally the SIMPLEST nest in the catalogue - one static contract, no templates, no factory rules. The work is volume, not config: ~17 events/block, ~68M events for full history from block 21688329 (~7 h at a measured 2,785 ev/s). Ships with a recent-history quickstart. No USD pricing (needs a token list; the declarative core makes no contract calls). The top 25 ranks uniswap-v4 deployments on BNB (#5) and Polygon (#18) as well; both need a `chains.rs` entry before `init` works without `--rpc`.",
+      "note": "Structurally the SIMPLEST nest in the catalogue - one static contract, no templates, no factory rules. The work is volume, not config: ~17 events/block, ~68M events for full history from block 21688329 (~7 h at a measured 2,785 ev/s). Ships with a recent-history quickstart. No USD pricing (needs a token list; the declarative core makes no contract calls). The top 25 ranks uniswap-v4 deployments on BNB (#5) and Polygon (#18) as well; BNB and Polygon are both built in.",
       "repo": "https://github.com/nuthatch-org/uniswap-v4-ethereum"
     },
     {
@@ -202,7 +202,7 @@
       "complexity": "high",
       "summary": "Concentrated-liquidity DEX - every pool discovered from the factory, with swaps, prices, and gross volume. The showcase for factory discovery: one rule tracks every pool, no per-pool config.",
       "events": "PoolCreated, Swap, Mint, Burn, Collect, Flash",
-      "note": "Configured for Arbitrum; the factory address is identical on every chain, so re-pointing is a two-line edit. Token decimals / USD pricing need a vendored token list (the declarative core makes no contract calls). The top 25 ranks uniswap-v3 deployments on BNB (#3), Polygon (#10) and Optimism (#15) as well; those three need a `chains.rs` entry before `init` works without `--rpc`.",
+      "note": "Configured for Arbitrum; the factory address is identical on every chain, so re-pointing is a two-line edit. Token decimals / USD pricing need a vendored token list (the declarative core makes no contract calls). The top 25 ranks uniswap-v3 deployments on BNB (#3), Polygon (#10) and Optimism (#15) as well; all three are built in.",
       "repo": "https://github.com/nuthatch-org/uniswap-v3"
     },
     {
