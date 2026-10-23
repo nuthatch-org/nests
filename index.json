@@ -477,7 +477,7 @@
       "complexity": "medium",
       "summary": "Omen prediction markets on Gnosis: fixed-product market makers, positions and trades.",
       "events": "FPMMCreated, FPMMBuy, FPMMSell, FPMMFundingAdded, FPMMFundingRemoved",
-      "note": "Ranked in the network's top 25 subgraphs by query fees (Aug 2026). Needs a `chains.rs` entry for Gnosis before it can be initialised without `--rpc`. Ranked #19, and notable for the highest fee-per-query figure in the top 25 by a wide margin.",
+      "note": "Ranked in the network's top 25 subgraphs by query fees (Aug 2026). Gnosis is built in, with keyless archive endpoints, so it initialises without `--rpc`. Ranked #19, and notable for the highest fee-per-query figure in the top 25 by a wide margin.",
       "repo": "https://github.com/nuthatch-org/omen-gnosis"
     },
     {
@@ -494,7 +494,7 @@
       "complexity": "medium",
       "summary": "Gnosis Conditional Tokens: conditions, positions, splits, merges and redemptions - the collateral layer Omen and other prediction markets settle on.",
       "events": "ConditionPreparation, ConditionResolution, PositionSplit, PositionsMerge, PayoutRedemption",
-      "note": "Ranked in the network's top 25 subgraphs by query fees (Aug 2026). Needs a `chains.rs` entry for Gnosis before it can be initialised without `--rpc`. Ranked #23.",
+      "note": "Ranked in the network's top 25 subgraphs by query fees (Aug 2026). Gnosis is built in, with keyless archive endpoints, so it initialises without `--rpc`. Ranked #23.",
       "repo": "https://github.com/nuthatch-org/conditional-tokens-gnosis"
     },
     {
@@ -511,7 +511,7 @@
       "complexity": "low",
       "summary": "Forsage x2 matrix contract on BNB Smart Chain: registrations, upgrades and referral payouts. A plain fixed-contract event nest.",
       "events": "Registration, Upgrade, NewUserPlace, MissedEthReceive, SentExtraEthDividends",
-      "note": "Ranked in the network's top 25 subgraphs by query fees (Aug 2026). Needs a `chains.rs` entry for BNB Smart Chain before it can be initialised without `--rpc`. Ranked #12.",
+      "note": "Ranked in the network's top 25 subgraphs by query fees (Aug 2026). BNB Smart Chain is built in, but its keyless endpoints serve only about the last 75 minutes of history, so a backfill needs an archive `--rpc`. Ranked #12.",
       "repo": "https://github.com/nuthatch-org/forsage-bsc"
     },
     {
