@@ -17,7 +17,7 @@ entries behind.
 - **Proof order:** [`PRIORITY.md`](PRIORITY.md), ranked by what each nest proves rather than by demand
 - **Demand-ranked reasoning:** [`docs/nest-catalogue.md`](https://github.com/nuthatch-org/nuthatch/blob/main/docs/nest-catalogue.md) in the core repo
 
-**47 nests**: 36 available, 8 building, 0 planned, 3 blocked.
+**58 nests**: 47 available, 9 building, 0 planned, 2 blocked.
 
 ## Graph Protocol nests
 
@@ -32,10 +32,14 @@ rather than creating a competing second network nest.
 | **Graph Name Service** | 🟡 building | Arbitrum | L2GNS subgraph publication history, including the event stream behind Graph developer-activity metrics. | [`init --from`](https://github.com/nuthatch-org/graph-gns-nest) · [graph-gns-nest](https://github.com/nuthatch-org/graph-gns-nest) |
 | **Graph TAP Escrow** | 🟡 building | Arbitrum | Legacy TAP Escrow account funding, settlement, thaw, and authorised-signer event history. | [`init --from`](https://github.com/nuthatch-org/graph-tap-escrow-nest) · [graph-tap-escrow-nest](https://github.com/nuthatch-org/graph-tap-escrow-nest) |
 | **Epoch Block Oracle** | 🟡 building | Arbitrum | The per-epoch canonical block for every indexed chain - the reference all indexers use to close multichain allocations consistently. | [`init --from`](https://github.com/nuthatch-org/epoch-block-oracle-nest) · [epoch-block-oracle-nest](https://github.com/nuthatch-org/epoch-block-oracle-nest) |
-| **Gateway QoS telemetry** | 🔴 blocked | Arbitrum | Indexer quality-of-service as the gateway measures it. Not reachable by indexing: the gateway publishes this off-chain and no contract emits it. | - |
+| **Gateway QoS telemetry** | 🟡 building | Gnosis | Edge & Node's gateway QoS oracle, read from its own postings on Gnosis rather than from its subgraph: per indexer, deployment and day figures, with no Graph API key. | [`init --from`](https://github.com/nuthatch-org/qos-reo-nest) · [qos-reo-nest](https://github.com/nuthatch-org/qos-reo-nest) |
 | **Graph Network** | 🟢 available | Arbitrum | The full Graph Network subgraph: indexers, allocations, curation, delegation, epochs and subgraph deployments in one surface. The pieces already ship as separate nests (graph-staking, graph-gns, graph-allocations); this is the union. | [`init --from`](https://github.com/nuthatch-org/graph-network) · [graph-network](https://github.com/nuthatch-org/graph-network) |
 | **Subgraph Availability Oracle** | 🟢 available | Arbitrum | The availability vote behind indexing rewards: oracles vote on whether a subgraph deployment is available, and a denied deployment stops accruing rewards. | [`init --from`](https://github.com/nuthatch-org/subgraph-availability-oracle) · [subgraph-availability-oracle](https://github.com/nuthatch-org/subgraph-availability-oracle) |
 | **Rewards Eligibility Oracle** | 🟢 available | Arbitrum | GIP-0088's Rewards Eligibility Oracle: authorised oracles mark indexers eligible to receive indexing rewards. Deployed and emitting, though not yet wired into the rewards flow. | [`init --from`](https://github.com/nuthatch-org/rewards-eligibility-oracle) · [rewards-eligibility-oracle](https://github.com/nuthatch-org/rewards-eligibility-oracle) |
+| **Lodestar sync bounties** | 🟢 available | Arbitrum | Every sync bounty posted on Lodestar's BountyBoard 2.0.0 and what became of it: open, paid, cancelled or refunded. `open_bounties` is what an indexer's automation polls. | [`init --from`](https://github.com/nuthatch-org/bounty-nest) · [bounty-nest](https://github.com/nuthatch-org/bounty-nest) |
+| **Horizon data service providers** | 🟢 available | Arbitrum | Provider registrations for five community Horizon data services: Dispatch, Seahorn, SDSCE, Mainline and the Nuthatch Data Service. One pair of tables per service. | [`init --from`](https://github.com/nuthatch-org/data-services-nest) · [data-services-nest](https://github.com/nuthatch-org/data-services-nest) |
+| **Direct Indexer Payments (DIPS)** | 🟢 available | Arbitrum | The DIPS contract stack on Arbitrum One: the Issuance Allocator, the Recurring Agreement Manager and the Recurring Collector, with a timeline view. Built to show when the agreement allocation stops being zero. | [`init --from`](https://github.com/nuthatch-org/dips-nest) · [dips-nest](https://github.com/nuthatch-org/dips-nest) |
+| **GRT supply, bridge removed** | 🟢 available | Ethereum, Arbitrum | GRT burned and minted on Ethereum and Arbitrum One with the bridge taken out. The network subgraph counts a withdrawal to L1 as a burn; this subtracts the bridge share, which BridgeBurned and BridgeMinted carry exactly. | [`init --from`](https://github.com/nuthatch-org/grt-supply-nest) · [grt-supply-nest](https://github.com/nuthatch-org/grt-supply-nest) |
 
 ## Ports of subgraphs
 
@@ -62,6 +66,9 @@ boundary: a source deployment is not an automatic claim of entity-for-entity par
 | **MachineX** | 🟡 building | peaq | A Solidly/Ramses-style DEX on peaq - concentrated-liquidity and legacy pools discovered from their factories, gauges and fee distributors from the Voter, and position lifecycle from the NonfungiblePositionManager. | [`init --from`](https://github.com/nuthatch-org/machinex-peaq) · [machinex-peaq](https://github.com/nuthatch-org/machinex-peaq) |
 | **Perpl (perpetual futures on Monad)** | 🟡 building | Monad | Perpl's exchange contract emits about seventy percent of Monad's logs and nothing indexed it publicly. Fills, funding, liquidations and markets in real units, from the contract's own 202 events, with the ABI vendored from Perpl's MIT SDK. | [`init --from`](https://github.com/nuthatch-org/perpl-nest) · [perpl-nest](https://github.com/nuthatch-org/perpl-nest) |
 | **BetSwirl BNB Chain** | 🟢 available | BNB Smart Chain | The first subgraph stopgap nest: BetSwirl on-chain games on BNB Smart Chain, whose subgraph no indexer serves since 2026-09-17. Answers every field BetSwirl's own SDK queries over Graph-dialect GraphQL, exactly, and refuses the rest by name. | [`init --from`](https://github.com/nuthatch-org/betswirl-bnb-nest) · [betswirl-bnb-nest](https://github.com/nuthatch-org/betswirl-bnb-nest) |
+| **Opolis** | 🟢 available | Ethereum | The Opolis Mainnet subgraph as a self-hosted nest: three payroll contracts, ten events each, thirty tables. Nothing hand-written: scaffolded from the deployment’s own manifest with `init --from-subgraph`. | [`init --from`](https://github.com/nuthatch-org/opolis-nest) · [opolis-nest](https://github.com/nuthatch-org/opolis-nest) |
+| **OpenLoom on BNB Chain** | 🟢 available | BNB Smart Chain | Answers the GraphQL of the openloom-bsc subgraph while no indexer on The Graph network serves it: every field of 13 entities, from three contracts and the boards, bonuses, forges and medals their factories create. | [`init --from`](https://github.com/nuthatch-org/openloom-bsc-nest) · [openloom-bsc-nest](https://github.com/nuthatch-org/openloom-bsc-nest) |
+| **OX AI PRO event history** | 🟢 available | Polygon | A limited event-history fallback for the OX AI PRO subgraph on Polygon: subscriptions, rewards, rank-ups, campaign wins, deposits, transfers and withdrawals as event records. | [`init --from`](https://github.com/nuthatch-org/ox-ai-pro-nest) · [ox-ai-pro-nest](https://github.com/nuthatch-org/ox-ai-pro-nest) |
 
 ## Other nests
 
@@ -87,6 +94,10 @@ boundary: a source deployment is not an automatic claim of entity-for-entity par
 | **Aave V3 (Base)** | Lending | 1 | 🟢 available | Base | [`init --from`](https://github.com/nuthatch-org/aave-v3-base) · [aave-v3-base](https://github.com/nuthatch-org/aave-v3-base) |
 | **Velodrome** | DEX | 2 | 🟢 available | Optimism | [`init --from`](https://github.com/nuthatch-org/velodrome) · [velodrome](https://github.com/nuthatch-org/velodrome) |
 | **DAI token** | CDP | 3 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/makerdao-dai) · [makerdao-dai](https://github.com/nuthatch-org/makerdao-dai) |
+| **DeFi Pulse** | DeFi | 2 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/defi-pulse-nest) · [defi-pulse-nest](https://github.com/nuthatch-org/defi-pulse-nest) |
+| **Lending liquidations** | Lending | 2 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/liquidations-nest) · [liquidations-nest](https://github.com/nuthatch-org/liquidations-nest) |
+| **Arcaidia** | Intents | 3 | 🟢 available | Arc Testnet, Sepolia | [`init --from`](https://github.com/nuthatch-org/arcaidia-nest) · [arcaidia-nest](https://github.com/nuthatch-org/arcaidia-nest) |
+| **Hackathon starter** | Token | 3 | 🟢 available | Sepolia, Arc Testnet | [`init --from`](https://github.com/nuthatch-org/hackathon-nest) · [hackathon-nest](https://github.com/nuthatch-org/hackathon-nest) |
 
 ## Status
 

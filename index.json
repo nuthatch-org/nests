@@ -139,15 +139,16 @@
       "name": "Gateway QoS telemetry",
       "category": "Graph Protocol",
       "tier": 0,
-      "status": "blocked",
+      "status": "building",
       "chains": [
-        "Arbitrum"
+        "Gnosis"
       ],
       "factory": false,
       "complexity": "high",
-      "summary": "Indexer quality-of-service as the gateway measures it. Not reachable by indexing: the gateway publishes this off-chain and no contract emits it.",
-      "events": "none - nothing on-chain carries this",
-      "note": "Was `QoS / Rewards-Eligibility Oracle`, which bundled two datasets. The REO half shipped 2026-08-22 as its own nest (`rewards-eligibility-oracle`) once GIP-0088's oracle was found deployed on Arbitrum One. What remains is the QoS half, and it is blocked rather than planned: gateway telemetry is published off-chain, so no nest can reach it. Reopen this if a future GIP posts QoS on-chain the way GIP-0088 did for eligibility. Note the entry previously cited GIP-0079; the deployed contract is GIP-0088."
+      "summary": "Edge & Node's gateway QoS oracle, read from its own postings on Gnosis rather than from its subgraph: per indexer, deployment and day figures, with no Graph API key.",
+      "events": "none: the DataEdge emits no events. It reads `submitQoSPayload` calls and the IPFS documents they name",
+      "note": "This entry said until 2026-11-11 that the data was unreachable because no contract emits it. That was wrong: the oracle posts a CID to a DataEdge on Gnosis every five minutes, and the nest reads the calls and the documents. It needs `[ipfs.rows]` and an IPFS gateway (`--ipfs`). Its sealed data is on the public mirror. The rewards-eligibility half is its own nest, `rewards-eligibility-oracle`.",
+      "repo": "https://github.com/nuthatch-org/qos-reo-nest"
     },
     {
       "id": "uniswap-v4",
@@ -744,6 +745,71 @@
       "repo": "https://github.com/nuthatch-org/rewards-eligibility-oracle"
     },
     {
+      "id": "bounty-nest",
+      "name": "Lodestar sync bounties",
+      "category": "Graph Protocol",
+      "tier": 0,
+      "status": "available",
+      "chains": [
+        "Arbitrum"
+      ],
+      "factory": false,
+      "complexity": "trivial",
+      "summary": "Every sync bounty posted on Lodestar's BountyBoard 2.0.0 and what became of it: open, paid, cancelled or refunded. `open_bounties` is what an indexer's automation polls.",
+      "events": "BountyPosted, BountyDistributed, BountyCancelled, BountyRefunded",
+      "note": "The BountyBoard is Lodestar's contract, not part of the protocol; it pays an indexer on the SubgraphService's own record of a presented POI. One real bounty had been through the views on 2026-11-11, open, and no paid, cancelled or refunded one. A copy is hosted at nuthatch-indexer.com/nests/bounty-nest.",
+      "repo": "https://github.com/nuthatch-org/bounty-nest"
+    },
+    {
+      "id": "data-services",
+      "name": "Horizon data service providers",
+      "category": "Graph Protocol",
+      "tier": 0,
+      "status": "available",
+      "chains": [
+        "Arbitrum"
+      ],
+      "factory": false,
+      "complexity": "trivial",
+      "summary": "Provider registrations for five community Horizon data services: Dispatch, Seahorn, SDSCE, Mainline and the Nuthatch Data Service. One pair of tables per service.",
+      "events": "ProviderRegistered, ProviderDeregistered",
+      "note": "Lodestar's service census reads it. Its sealed data is on the public mirror.",
+      "repo": "https://github.com/nuthatch-org/data-services-nest"
+    },
+    {
+      "id": "dips",
+      "name": "Direct Indexer Payments (DIPS)",
+      "category": "Graph Protocol",
+      "tier": 0,
+      "status": "available",
+      "chains": [
+        "Arbitrum"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "The DIPS contract stack on Arbitrum One: the Issuance Allocator, the Recurring Agreement Manager and the Recurring Collector, with a timeline view. Built to show when the agreement allocation stops being zero.",
+      "events": "IssuanceDistributed, TargetAllocationUpdated, AgreementAdded, AgreementReconciled, AgreementRemoved, EscrowFunded, EscrowWithdrawn and the contracts’ admin events, 56 tables in all",
+      "note": "The repository also carries an Arbitrum Sepolia manifest. Its sealed data is on the public mirror.",
+      "repo": "https://github.com/nuthatch-org/dips-nest"
+    },
+    {
+      "id": "grt-supply",
+      "name": "GRT supply, bridge removed",
+      "category": "Graph Protocol",
+      "tier": 0,
+      "status": "available",
+      "chains": [
+        "Ethereum",
+        "Arbitrum"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "GRT burned and minted on Ethereum and Arbitrum One with the bridge taken out. The network subgraph counts a withdrawal to L1 as a burn; this subtracts the bridge share, which BridgeBurned and BridgeMinted carry exactly.",
+      "events": "Transfer, BridgeBurned, BridgeMinted",
+      "note": "Two nests in one repository, `mainnet/` and `arbitrum-one/`, because a nest follows one chain; run each from its own directory. Both are on the public mirror. Background: graphprotocol/graph-network-subgraph#337.",
+      "repo": "https://github.com/nuthatch-org/grt-supply-nest"
+    },
+    {
       "id": "perpl",
       "catalogue_section": "subgraph-ports",
       "name": "Perpl (perpetual futures on Monad)",
@@ -777,6 +843,123 @@
       "events": "PlaceBet, Roll, BetRefunded, AddToken, SetHouseEdge, SetAffiliateHouseEdge, AllocateHouseEdgeAmount, GameConfigAdded",
       "note": "Retired 2026-10-07: no users, hosted endpoint off. Hand-ported from deployment Qmd5oqyojVx5wWSFuWfKz3YVLPHdE3KU5458Qqq3SVeGEB: rules read from the deployed WASM, checked against 32,257 bets from raw chain logs with zero differences. GraphQL needs the nuthatch-graph download (4.11.0+); history needs a BNB archive endpoint, or seed it from the public mirror. Handback: docs/stopgap/betswirl-bnb.md in nuthatch-org/nuthatch.",
       "repo": "https://github.com/nuthatch-org/betswirl-bnb-nest"
+    },
+    {
+      "id": "defi-pulse",
+      "name": "DeFi Pulse",
+      "category": "DeFi",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "A small Ethereum nest of the events people check daily, light enough to load whole in a browser tab: USDC and USDT supply, Aave v3 liquidations, Lido flows and the Chainlink ETH/USD feed, from the first block of 2026.",
+      "events": "Mint, Burn, Issue, Redeem, LiquidationCall, Submitted, WithdrawalRequested, WithdrawalsFinalized, WithdrawalClaimed, AnswerUpdated",
+      "note": "The demo nest for RFC-0065, the nest in a tab, and the default nest on /play. Its sealed data is on the public mirror.",
+      "repo": "https://github.com/nuthatch-org/defi-pulse-nest"
+    },
+    {
+      "id": "liquidations",
+      "name": "Lending liquidations",
+      "category": "Lending",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "medium",
+      "summary": "Every lending liquidation on Ethereum since 1 January 2023 in one table: Aave v3 (Core, Prime, EtherFi), Spark, Compound v3, Morpho Blue, Sky and Liquity v1, priced by token address from Chainlink closes.",
+      "events": "LiquidationCall, AbsorbCollateral, AbsorbDebt, BuyCollateral, Liquidate, CreateMarket, Bark, TroveLiquidated, AnswerUpdated",
+      "note": "The nest behind nuthatch-indexer.com/analytics. Seventeen contracts with hand-written event-only ABIs, so decoding does not depend on a proxy’s current implementation.",
+      "repo": "https://github.com/nuthatch-org/liquidations-nest"
+    },
+    {
+      "id": "arcaidia",
+      "name": "Arcaidia",
+      "category": "Intents",
+      "tier": 3,
+      "status": "available",
+      "chains": [
+        "Arc Testnet",
+        "Sepolia"
+      ],
+      "factory": true,
+      "complexity": "medium",
+      "summary": "The Arcaidia v2 contracts on Arc Testnet and Ethereum Sepolia: three fixed contracts plus every vault the factory creates, with ten views that reproduce the subgraph’s entities by name.",
+      "events": "IntentCreated, VaultCreated, Deposit, Withdraw, FastFilled, DeliveredViaSwap, FeesAccrued, SettledWithProof, LpReimbursed, HeldForVault",
+      "note": "Built from the Arcaidia v2 indexer pack and hosted for the ETHOnline 2026 build. One manifest per chain: `nuthatch.toml` for Arc Testnet and `nuthatch.sepolia.toml` for Sepolia.",
+      "repo": "https://github.com/nuthatch-org/arcaidia-nest"
+    },
+    {
+      "id": "hackathon",
+      "name": "Hackathon starter",
+      "category": "Token",
+      "tier": 3,
+      "status": "available",
+      "chains": [
+        "Sepolia",
+        "Arc Testnet"
+      ],
+      "factory": false,
+      "complexity": "trivial",
+      "summary": "A starter for hackathon builders on testnets: one contract’s events in a local SQL database with an HTTP API, so a front end polling several times a second does not run into Subgraph Studio’s rate limit.",
+      "events": "Transfer, Approval",
+      "note": "Ships pointed at USDC on Sepolia; swap in your own contract. Its README is plain about prize tracks: judges want the subgraph in the demo, so use the nest for the build-and-test loop.",
+      "repo": "https://github.com/nuthatch-org/hackathon-nest"
+    },
+    {
+      "id": "opolis",
+      "catalogue_section": "subgraph-ports",
+      "name": "Opolis",
+      "category": "Payments",
+      "tier": 3,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "The Opolis Mainnet subgraph as a self-hosted nest: three payroll contracts, ten events each, thirty tables. Nothing hand-written: scaffolded from the deployment’s own manifest with `init --from-subgraph`.",
+      "events": "Paid, Staked, Sweep, OpsPayrollWithdraw, OpsStakeWithdraw, NewAdmin, NewDestination, NewHelper, NewTokens, SetupComplete",
+      "note": "From deployment QmX6GEzUQ2vFBULhFzWByUweNTLATWdzBCoE8b1ALZfo3T, built while diagnosing nuthatch-org/graph-support#26, where the sole allocated indexer’s store went down. Event tables only; the subgraph’s entities are not reproduced.",
+      "repo": "https://github.com/nuthatch-org/opolis-nest"
+    },
+    {
+      "id": "openloom-bsc",
+      "catalogue_section": "subgraph-ports",
+      "name": "OpenLoom on BNB Chain",
+      "category": "Other",
+      "tier": 3,
+      "status": "available",
+      "chains": [
+        "BNB Smart Chain"
+      ],
+      "factory": true,
+      "complexity": "medium",
+      "summary": "Answers the GraphQL of the openloom-bsc subgraph while no indexer on The Graph network serves it: every field of 13 entities, from three contracts and the boards, bonuses, forges and medals their factories create.",
+      "events": "MakeCard, CreateToken, Mint, Subscribe, Ransom, Release, TakeReward, TakeBrokerage, Harvest, Distribute, MintMedal, Transfer",
+      "note": "A stopgap for deployment QmXsbGm5Mbm9H5HWrt11uwWSf58MyaxjspF4TNYx166Xgz, stood up 2026-10-08. `DailyState` is not served, and a query that asks for it gets an error naming it. The contracts were last active on 2026-05-19, so the data is complete and frozen. Record: nuthatch-org/graph-support#53.",
+      "repo": "https://github.com/nuthatch-org/openloom-bsc-nest"
+    },
+    {
+      "id": "ox-ai-pro",
+      "catalogue_section": "subgraph-ports",
+      "name": "OX AI PRO event history",
+      "category": "Other",
+      "tier": 3,
+      "status": "available",
+      "chains": [
+        "Polygon"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "A limited event-history fallback for the OX AI PRO subgraph on Polygon: subscriptions, rewards, rank-ups, campaign wins, deposits, transfers and withdrawals as event records.",
+      "events": "Subscribed, RewardBooked, RankUp, CampaignReward, MonthSnapshot, UsdtDeposited, PBTransferred, WithdrawPB, MemberRegistered",
+      "note": "For deployment QmbzwJnre963f9wT9VCJPede69vaniAKWVHzUEsAmBfrHG. It does not restore the app’s dashboard: global counters, member balances, ranks, referral-tree totals and director reward state are not reproduced, and a query for one fails by name.",
+      "repo": "https://github.com/nuthatch-org/ox-ai-pro-nest"
     }
   ],
   "chains_note": "`chains` lists the chains nuthatch can index today (Ethereum, Arbitrum One, Base). A protocol may be deployed more widely; support for further chains is tracked in RFC-0030 and RFC-0031 in the core repo."
