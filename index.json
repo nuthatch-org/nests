@@ -877,6 +877,22 @@
       "repo": "https://github.com/nuthatch-org/liquidations-nest"
     },
     {
+      "id": "polymarket",
+      "name": "Polymarket",
+      "category": "Prediction market",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Polygon"
+      ],
+      "factory": false,
+      "complexity": "medium",
+      "summary": "Polymarket on Polygon: Conditional Tokens, both CTF exchanges, the NegRisk adapter and the Poly v2 exchange, with views for fills, matched orders and hourly volume by venue.",
+      "events": "OrderFilled, OrdersMatched, PositionSplit, PositionsMerge, PayoutRedemption, TransferSingle, ConditionPreparation, ConditionResolution",
+      "note": "About 500 events a block. Measured on 2026-11-13 with 5.21.0: the last 2,000 blocks, 993,419 events, indexed in 4 m 40 s on keyless public endpoints at 326 MB peak RSS, then it held the tip. Full history needs your own archive node, and market names are not onchain.",
+      "repo": "https://github.com/nuthatch-org/polymarket-nest"
+    },
+    {
       "id": "arcaidia",
       "name": "Arcaidia",
       "category": "Intents",
