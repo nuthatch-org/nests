@@ -893,6 +893,22 @@
       "repo": "https://github.com/nuthatch-org/polymarket-nest"
     },
     {
+      "id": "aztec-staking",
+      "name": "Aztec staking",
+      "category": "Staking",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "medium",
+      "summary": "Aztec staking on Ethereum: every event of the four Rollup contracts canonical since November 2025, with views for deposits, withdrawals, slashes and which attesters are still staked.",
+      "events": "Deposit, WithdrawInitiated, WithdrawFinalized, Slashed, ValidatorQueued, FailedDeposit, CheckpointProposed, L2ProofVerified",
+      "note": "Measured on 2026-11-14 with 5.21.0: 887,272 events over 2,627,065 blocks in 14 m 38 s on keyless public endpoints. Its count of staked attesters, 3,511, equalled the totalStakers Aztec’s own staking API reported in the same minute. No provider or ATP tables: those live in the StakingRegistry and ATP contracts.",
+      "repo": "https://github.com/nuthatch-org/aztec-staking-nest"
+    },
+    {
       "id": "arcaidia",
       "name": "Arcaidia",
       "category": "Intents",
