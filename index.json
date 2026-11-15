@@ -903,9 +903,9 @@
       ],
       "factory": false,
       "complexity": "medium",
-      "summary": "Aztec staking on Ethereum: every event of the four Rollup contracts canonical since November 2025, with views for deposits, withdrawals, slashes and which attesters are still staked.",
+      "summary": "Aztec staking on Ethereum: every event of the four Rollup contracts and the StakingRegistry, with views for deposits, withdrawals, slashes, which attesters are still staked, and stake by provider.",
       "events": "Deposit, WithdrawInitiated, WithdrawFinalized, Slashed, ValidatorQueued, FailedDeposit, CheckpointProposed, L2ProofVerified",
-      "note": "Measured on 2026-11-14 with 5.21.0: 887,272 events over 2,627,065 blocks in 14 m 38 s on keyless public endpoints. Its count of staked attesters, 3,511, equalled the totalStakers Aztec’s own staking API reported in the same minute. No provider or ATP tables: those live in the StakingRegistry and ATP contracts.",
+      "note": "Measured on 2026-11-14 with 5.21.0: 896,938 events in 14 m 02 s on keyless public endpoints. Staked plus exiting attesters, 3,506, equalled the totalStakers Aztec’s own staking API reported in the same minute, and stake by provider matched the API for 21 of 22 providers checked. Slashing is not modelled into status; no ATP tables.",
       "repo": "https://github.com/nuthatch-org/aztec-staking-nest"
     },
     {
@@ -992,6 +992,22 @@
       "events": "Subscribed, RewardBooked, RankUp, CampaignReward, MonthSnapshot, UsdtDeposited, PBTransferred, WithdrawPB, MemberRegistered",
       "note": "For deployment QmbzwJnre963f9wT9VCJPede69vaniAKWVHzUEsAmBfrHG. It does not restore the app’s dashboard: global counters, member balances, ranks, referral-tree totals and director reward state are not reproduced, and a query for one fails by name.",
       "repo": "https://github.com/nuthatch-org/ox-ai-pro-nest"
+    },
+    {
+      "id": "pwnpot",
+      "name": "Pwnpot CTF platform",
+      "category": "Games",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Base Sepolia"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "Pwnpot’s CTFPlatform, a paid smart-contract CTF on Base Sepolia: every event as a table, with views for each CTF’s history and each player’s stats.",
+      "events": "CTFCreated, TicketBought, InstanceCreated, LevelSolved, Finalized, Credited, Withdrawn",
+      "note": "Measured on 2026-11-15 with 5.21.0: the whole history, 3,823,537 blocks, in 17 s on keyless endpoints; its 7 events are the 7 Blockscout lists. sepolia.base.org caps getLogs at 200 blocks, so the nest uses Tenderly and publicnode.",
+      "repo": "https://github.com/nuthatch-org/pwnpot-nest"
     }
   ],
   "chains_note": "`chains` lists the chains nuthatch can index today (Ethereum, Arbitrum One, Base). A protocol may be deployed more widely; support for further chains is tracked in RFC-0030 and RFC-0031 in the core repo."
