@@ -17,7 +17,7 @@ entries behind.
 - **Proof order:** [`PRIORITY.md`](PRIORITY.md), ranked by what each nest proves rather than by demand
 - **Demand-ranked reasoning:** [`docs/nest-catalogue.md`](https://github.com/nuthatch-org/nuthatch/blob/main/docs/nest-catalogue.md) in the core repo
 
-**60 nests**: 49 available, 9 building, 0 planned, 2 blocked.
+**61 nests**: 50 available, 9 building, 0 planned, 2 blocked.
 
 ## Graph Protocol nests
 
@@ -100,6 +100,7 @@ boundary: a source deployment is not an automatic claim of entity-for-entity par
 | **Aztec staking** | Staking | 2 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/aztec-staking-nest) · [aztec-staking-nest](https://github.com/nuthatch-org/aztec-staking-nest) |
 | **Arcaidia** | Intents | 3 | 🟢 available | Arc Testnet, Sepolia | [`init --from`](https://github.com/nuthatch-org/arcaidia-nest) · [arcaidia-nest](https://github.com/nuthatch-org/arcaidia-nest) |
 | **Hackathon starter** | Token | 3 | 🟢 available | Sepolia, Arc Testnet | [`init --from`](https://github.com/nuthatch-org/hackathon-nest) · [hackathon-nest](https://github.com/nuthatch-org/hackathon-nest) |
+| **Pwnpot CTF platform** | Games | 2 | 🟢 available | Base Sepolia | [`init --from`](https://github.com/nuthatch-org/pwnpot-nest) · [pwnpot-nest](https://github.com/nuthatch-org/pwnpot-nest) |
 
 ## Status
 
