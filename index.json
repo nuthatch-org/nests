@@ -1008,6 +1008,70 @@
       "events": "CTFCreated, TicketBought, InstanceCreated, LevelSolved, Finalized, Credited, Withdrawn",
       "note": "Measured on 2026-11-15 with 5.21.0: the whole history, 3,823,537 blocks, in 17 s on keyless endpoints; its 7 events are the 7 Blockscout lists. sepolia.base.org caps getLogs at 200 blocks, so the nest uses Tenderly and publicnode.",
       "repo": "https://github.com/nuthatch-org/pwnpot-nest"
+    },
+    {
+      "id": "usdc",
+      "name": "USDC",
+      "category": "Stablecoin",
+      "tier": 1,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "trivial",
+      "summary": "Circle’s USDC on Ethereum: every transfer, approval, mint, burn and blacklisting, with views for hourly volume and for issuance, whose sum over a range is the change in totalSupply.",
+      "events": "Transfer, Approval, Mint, Burn, AuthorizationUsed, Blacklisted, MinterConfigured",
+      "note": "Measured on 2026-11-17 with 5.22.0: the last 7,200 blocks, 698,795 events, in 3 m 20 s on keyless public endpoints; a later rate-limited run took 13 m 27 s at 321 MB peak RSS. Mints less burns over the range equalled the change in totalSupply by eth_call to the unit. Full history needs your own archive node.",
+      "repo": "https://github.com/nuthatch-org/usdc-nest"
+    },
+    {
+      "id": "usdc-base",
+      "name": "USDC (Base)",
+      "category": "Stablecoin",
+      "tier": 1,
+      "status": "available",
+      "chains": [
+        "Base"
+      ],
+      "factory": false,
+      "complexity": "trivial",
+      "summary": "Circle’s native USDC on Base: every transfer, approval, mint, burn and blacklisting, with views for hourly volume and for issuance.",
+      "events": "Transfer, Approval, Mint, Burn, AuthorizationUsed, Blacklisted, MinterConfigured",
+      "note": "Measured on 2026-11-17 with 5.22.0: the last 43,200 blocks (about two and a half hours at Base’s 200 ms blocks), 586,460 events, in 2 m 56 s on keyless public endpoints at 616 MB peak RSS. Mints less burns over the range equalled the change in totalSupply by eth_call to the unit.",
+      "repo": "https://github.com/nuthatch-org/usdc-base-nest"
+    },
+    {
+      "id": "weth",
+      "name": "WETH",
+      "category": "Token",
+      "tier": 1,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "trivial",
+      "summary": "Wrapped Ether (WETH9) on Ethereum: every wrap, unwrap, transfer and approval, with a view of wraps and unwraps whose sum over a range is the change in totalSupply, and an hourly flow.",
+      "events": "Deposit, Withdrawal, Transfer, Approval",
+      "note": "Measured on 2026-11-17 with 5.22.0: the last 7,200 blocks, 350,823 events, in 6 m 34 s on rate-limited keyless public endpoints at 263 MB peak RSS. Wraps less unwraps over the range equalled the change in totalSupply by eth_call to the wei.",
+      "repo": "https://github.com/nuthatch-org/weth-nest"
+    },
+    {
+      "id": "arc-usdc",
+      "name": "USDC (Arc Testnet)",
+      "category": "Stablecoin",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Arc Testnet"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "USDC on Arc, Circle’s EVM L1, where it is also the gas token: the ERC-20 interface at 0x3600…0000 and the native system emitter at 0xffff…fffe, with a view that counts each movement once and an hourly one.",
+      "events": "Transfer (ERC-20 and native), Approval, Mint, Burn, MinterConfigured, AuthorizationUsed, Blacklisted, UnBlacklisted, Pause, Unpause",
+      "note": "Measured on 2026-11-17 with 5.22.0: 178,433 blocks (about 32 hours), 1,386,556 events, in 17 m 13 s on Arc’s rate-limited keyless endpoints at 490 MB peak RSS; counts for a 200-block range match Arc’s explorer API. Arc’s RPC refuses more than ten topic0s per getLogs, so ten of the FiatToken’s 17 events are indexed.",
+      "repo": "https://github.com/nuthatch-org/arc-usdc-nest"
     }
   ],
   "chains_note": "`chains` lists the chains nuthatch can index today (Ethereum, Arbitrum One, Base). A protocol may be deployed more widely; support for further chains is tracked in RFC-0030 and RFC-0031 in the core repo."
