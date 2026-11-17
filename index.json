@@ -1008,6 +1008,22 @@
       "events": "CTFCreated, TicketBought, InstanceCreated, LevelSolved, Finalized, Credited, Withdrawn",
       "note": "Measured on 2026-11-15 with 5.21.0: the whole history, 3,823,537 blocks, in 17 s on keyless endpoints; its 7 events are the 7 Blockscout lists. sepolia.base.org caps getLogs at 200 blocks, so the nest uses Tenderly and publicnode.",
       "repo": "https://github.com/nuthatch-org/pwnpot-nest"
+    },
+    {
+      "id": "eurc",
+      "name": "EURC",
+      "category": "Stablecoin",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "Circle’s EURC on Ethereum from its deployment block: every transfer, mint, burn and freeze, with views for supply, frozen balances, holders and the MiCA Art 22 quarterly figures, and evidence bundles another machine can re-execute.",
+      "events": "Transfer, Mint, Burn, Blacklisted, UnBlacklisted, MinterConfigured, Approval",
+      "note": "Measured on 2026-11-17 with 5.22.0: supply at 2022-12-31 23:59 PT, 24,905,662.05, matches Circle’s December 2022 report. Seeds from the public mirror (13,998 segments, 183 MB) and a second full index sealed byte-identical segments. Not KYT, not sanctions screening, not legal advice.",
+      "repo": "https://github.com/nuthatch-org/eurc-nest"
     }
   ],
   "chains_note": "`chains` lists the chains nuthatch can index today (Ethereum, Arbitrum One, Base). A protocol may be deployed more widely; support for further chains is tracked in RFC-0030 and RFC-0031 in the core repo."
