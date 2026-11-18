@@ -1010,6 +1010,22 @@
       "repo": "https://github.com/nuthatch-org/pwnpot-nest"
     },
     {
+      "id": "eurc",
+      "name": "EURC",
+      "category": "Stablecoin",
+      "tier": 2,
+      "status": "available",
+      "chains": [
+        "Ethereum"
+      ],
+      "factory": false,
+      "complexity": "low",
+      "summary": "Circle’s EURC on Ethereum from its deployment block: every transfer, mint, burn and freeze, with views for supply, frozen balances, holders and the MiCA Art 22 quarterly figures, and evidence bundles another machine can re-execute.",
+      "events": "Transfer, Mint, Burn, Blacklisted, UnBlacklisted, MinterConfigured, Approval",
+      "note": "Measured on 2026-11-17 with 5.22.0: supply at 2022-12-31 23:59 PT, 24,905,662.05, matches Circle’s December 2022 report. Seeds from the public mirror (13,998 segments, 183 MB) and a second full index sealed byte-identical segments. Not KYT, not sanctions screening, not legal advice.",
+      "repo": "https://github.com/nuthatch-org/eurc-nest"
+    },
+    {
       "id": "usdc",
       "name": "USDC",
       "category": "Stablecoin",

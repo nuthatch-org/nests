@@ -17,7 +17,7 @@ entries behind.
 - **Proof order:** [`PRIORITY.md`](PRIORITY.md), ranked by what each nest proves rather than by demand
 - **Demand-ranked reasoning:** [`docs/nest-catalogue.md`](https://github.com/nuthatch-org/nuthatch/blob/main/docs/nest-catalogue.md) in the core repo
 
-**65 nests**: 54 available, 9 building, 0 planned, 2 blocked.
+**66 nests**: 55 available, 9 building, 0 planned, 2 blocked.
 
 ## Graph Protocol nests
 
@@ -101,6 +101,7 @@ boundary: a source deployment is not an automatic claim of entity-for-entity par
 | **Arcaidia** | Intents | 3 | 🟢 available | Arc Testnet, Sepolia | [`init --from`](https://github.com/nuthatch-org/arcaidia-nest) · [arcaidia-nest](https://github.com/nuthatch-org/arcaidia-nest) |
 | **Hackathon starter** | Token | 3 | 🟢 available | Sepolia, Arc Testnet | [`init --from`](https://github.com/nuthatch-org/hackathon-nest) · [hackathon-nest](https://github.com/nuthatch-org/hackathon-nest) |
 | **Pwnpot CTF platform** | Games | 2 | 🟢 available | Base Sepolia | [`init --from`](https://github.com/nuthatch-org/pwnpot-nest) · [pwnpot-nest](https://github.com/nuthatch-org/pwnpot-nest) |
+| **EURC** | Stablecoin | 2 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/eurc-nest) · [eurc-nest](https://github.com/nuthatch-org/eurc-nest) |
 | **USDC** | Stablecoin | 1 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/usdc-nest) · [usdc-nest](https://github.com/nuthatch-org/usdc-nest) |
 | **USDC (Base)** | Stablecoin | 1 | 🟢 available | Base | [`init --from`](https://github.com/nuthatch-org/usdc-base-nest) · [usdc-base-nest](https://github.com/nuthatch-org/usdc-base-nest) |
 | **WETH** | Token | 1 | 🟢 available | Ethereum | [`init --from`](https://github.com/nuthatch-org/weth-nest) · [weth-nest](https://github.com/nuthatch-org/weth-nest) |
